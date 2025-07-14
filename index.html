@@ -1,40 +1,222 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<title>reveal.js</title>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/UFCBeamer.css">
+	
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-color="#002939">
+				<div id="logo_UFC"></div>
+				<div class="slides__container">
+					<div style="display: flex; flex-direction: column; justify-content: space-between;">
+						<div style="display: flex; flex-direction: column; gap: 20pt;">
+							<div style="margin-top: 20pt;">
+								<p style="font-size: 9pt; font-weight: 300;">MSc. Thesis Defense | Graduate Program in Teleinformatics Engineering</p>
+							</div>
+							<h1>On applications of<br> stochastic differential equations</h1>
+							<div>
+								<p style="font-size: 20pt; font-family: Raleway; font-weight: 400;">Filipe P. de Farias</p>
+								<p style="font-family: monospace; font-weight: lighter;"><a style="color: inherit;" href="mailto:filipepfarias@alu.ufc.br">filipepfarias@alu.ufc.br</a></p>
+							</div>
+							<p style="font-family: Raleway; font-weight: 200;">Department of Teleinformatics Engineering<br>Federal University of Ceará</p>
+							<p style="font-family: Raleway; font-weight: 200;">Supervisor: Prof. Dr. Michela Mulas<br>Signals and Systems / Pattern recognition and dynamical systems</p>
+							<p style="font-size: 18pt; font-family: Raleway; font-weight: 400;">July 23, 2025</p>
+							<div style="display: flex; align-items: center; justify-content: space-between; margin: 0pt 30pt 0pt 30pt;">
+								<img style="height: 105pt; max-height: 100%; max-width: 100%;" src="dist/theme/UFCBeamer/assets/assinatura_UFC70.svg"></img>
+								<img style="height: 90pt; max-height: 100%; max-width: 100%;" src="dist/theme/UFCBeamer/assets/PPGETI_horizontal_branco.svg"></img>
+								<img  style="height: 65pt; max-height: 100%; max-width: 100%; padding-right: 1.2em;" src="dist/theme/UFCBeamer/assets/DETI_horizontal_branco.png"></img>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section data-background-color="#FFF">
+				<div class="slides__container">
+					<div class="header">
+						<p>MSc. Thesis Defense | Graduate Program in Teleinformatics Engineering</p>
+						<div class="header__images">
+							<img src="dist/theme/UFCBeamer/assets/assinatura_conjunta_horizontal_monocromatica.svg" style="margin: 3pt 0pt;"></img>
+						</div>
+					</div>
+					<div class="content">
+						<h1>What are stochastic differential equations (SDEs)?</h1>
+						
+						<p>SDEs extend the theory of (ordinary) differential equations (DE) to include a <mark>source of randomness</mark>1</p>
 
-		<title>reveal.js</title>
+						<ul>
+							<li>DEs model a system’s dynamics and depend on system’s states, inputs, parameters, and time</li>
+						</ul>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+						\[
+						\frac{{\rm d}x(t)}{{\rm d}t} = f({{x(t)}}, {{u(t)}}, {{\theta}}, {{t}})
+            {\Longrightarrow \frac{{\rm d}x(t)}{{\rm d}t} = f(x(t), u(t), {{\eta}}, \theta, t).}
+						\]
+						
+						
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+						<div style="display: flex; justify-content: space-between;">
+							<video controls loop style="height: 160pt;" data-autoplay src="assets/movie.mov"></video>
+							<video controls loop style="height: 160pt;" data-autoplay src="assets/gas_v4.mov"></video>
+							<img style="height: 160pt; margin: 0%;" data-autoplay src="assets/wiener.svg"></img>
+							
+
+						</div>
+					</div>
+					<div class="footer">
+						<p>F. P. de Farias</p>
+						<p>On applications of SDEs</p>
+						<!-- <p>1 / X</p> -->
+						<div id="moved-slide-number"><!-- Will receive the moved <p> -->
+							<p>1/x</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section data-background-color="#FFF">
+				<div class="slides__container">
+					<div class="header">
+						<p>MSc. Thesis Defense | Graduate Program in Teleinformatics Engineering</p>
+						<div class="header__images">
+							<img src="dist/theme/UFCBeamer/assets/assinatura_conjunta_horizontal_monocromatica.svg" style="margin: 3pt 0pt;"></img>
+						</div>
+					</div>
+					<div class="content">
+						<h1>Aims of the research</h1>
+
+						<p>With the theory of SDEs we aim to:</p>
+						<ul>
+							<li>model systems influenced by random fluctuations;</li>
+							<li>simulate computationally and analyse systems described by SDEs;</li>
+							<li>estimate processes, leveraging noise as a source of uncertainty;</li>
+							<li>control systems affected by random inputs.</li>
+						</ul>
+						<hr>
+						<p>Some objectives were partially achieved:</p>
+						<ul>
+							<li>the stochastic modelling and simulation of chemical reactions12;</li>
+							<li>the estimation of the parameters of a model of bioreactor3</li>
+						</ul>					
+					</div>
+					<div class="footer">
+						<p>F. P. de Farias</p>
+						<p>On applications of SDEs</p>
+						<!-- <p>1 / X</p> -->
+						<div id="moved-slide-number"><!-- Will receive the moved <p> -->
+							<p>1/x</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section data-background-color="#FFF">
+				<div class="slides__container">
+					<div class="header">
+						<p>MSc. Thesis Defense | Graduate Program in Teleinformatics Engineering</p>
+						<div class="header__images">
+							<img src="dist/theme/UFCBeamer/assets/assinatura_conjunta_horizontal_monocromatica.svg" style="margin: 3pt 0pt;"></img>
+						</div>
+					</div>
+					<div class="content">
+						<h1>Theoretical and historical overview</h1>
+
+						<p>With the theory of SDEs we aim to:</p>
+						<ul>
+							<li>model systems influenced by random fluctuations;</li>
+							<li>simulate computationally and analyse systems described by SDEs;</li>
+							<li>estimate processes, leveraging noise as a source of uncertainty;</li>
+							<li>control systems affected by random inputs.</li>
+						</ul>
+						<hr>
+						<p>Some objectives were partially achieved:</p>
+						<ul>
+							<li>the stochastic modelling and simulation of chemical reactions12;</li>
+							<li>the estimation of the parameters of a model of bioreactor3</li>
+						</ul>					
+					</div>
+					<div class="footer">
+						<p>F. P. de Farias</p>
+						<p>On applications of SDEs</p>
+						<!-- <p>1 / X</p> -->
+						<div id="moved-slide-number"><!-- Will receive the moved <p> -->
+							<p>1/x</p>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
-
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+	</div>
+	
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script>
+		
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		const reveal = Reveal.initialize({
+			hash: true,
+			autoPlayMedia: true,
+			
+			mathjax3: {
+				mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+				tex: {
+					inlineMath: [
+					['$', '$'],
+					['\\(', '\\)'],
+					],
+				},
+				options: {
+					skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+				},
+			},
+			
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.MathJax3 ]
+		});			
+		
+		
+		// const targetClass = 'slide-number';
+		// const newContainer = document.getElementById('moved-slide-number');
+		
+		// function moveAndObserveElement() {
+		// 	const el = document.querySelector(`p.${targetClass}`);
+		// 	if (!el || newContainer.contains(el)) return;
+			
+		// 	// Move the element
+		// 	newContainer.appendChild(el);
+			
+		// 	// Observe changes to the content of the element
+		// 	const observer = new MutationObserver(() => {
+		// 		// You could add logic here if needed when content changes
+		// 		// console.log('Element content updated:', el.textContent);
+		// 	});
+			
+		// 	observer.observe(el, { childList: true, characterData: true, subtree: true });
+		// }
+		
+		// // Try initially
+		// moveAndObserveElement();
+		
+		// // Then watch for DOM changes to reactively move it if needed
+		// const domObserver = new MutationObserver(moveAndObserveElement);
+		// domObserver.observe(document.body, { childList: true, subtree: true });
+	</script>
+</body>
 </html>

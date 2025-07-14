@@ -1,0 +1,173 @@
+/**
+ * White theme for reveal.js. This is the opposite of the 'black' theme.
+ *
+ * By Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@use "sass:color";
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #222;
+$headingColor: #222;
+$themeColor: #002939;
+
+$mainFontSize: 12pt;
+$mainFont: 'Lato', Helvetica, sans-serif;
+$headingFont: 'Raleway', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: normal;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: color.scale( $linkColor, $lightness: 15% );
+$selectionBackgroundColor: color.scale( $linkColor, $lightness: 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+$headerFontSize: 9pt;
+$footerFontSize: 9pt;
+
+$overlayElementBgColor: 0, 0, 0;
+$overlayElementFgColor: 240, 240, 240;
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color(#fff);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+
+
+.slides {
+	#logo_UFC{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 400pt;
+		opacity: 0.15;
+		height: 900pt;
+		background-image: url(/dist/theme/UFCBeamer/assets/brasao4_vertical_white.svg);
+		background-repeat: no-repeat;
+		background-position: -100pt 500pt;
+	}
+
+	&__container {
+		min-height: 700px;
+		position: relative;
+		
+		gap: 16px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		p {
+			margin: 0 !important;
+		}
+	}
+
+	.content {
+		min-height: 600px;
+		text-align: left;
+
+		& > :not(h1) {
+			padding: 0 48px;
+		}
+
+		h1 {
+			font-size: 18pt;
+			color: $themeColor;
+			font-weight: 700;
+		}
+	}
+
+	.header {
+		height: 40px;
+		width: 100%;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		p {
+			font-size: $headerFontSize;
+			font-weight: 300;
+		}
+
+		&__images {
+			filter: invert(100%);
+    		height: 40pt;
+		}
+
+	}
+
+	.footer {
+		height: 40px;
+		width: 100%;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		p {
+			font-size: $headerFontSize;
+		}
+
+		p.slide-number {
+			all: unset;         /* Resets all styles (including inherited ones) */
+			display: block;     /* You might need to re-add this for paragraphs */
+			// margin: 1em 0;      /* Restore default browser paragraph spacing */
+			font-size: $headerFontSize;
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding-left: 0;  /* optional: removes default indents */
+	}
+
+	ul li {
+		position: relative;
+		padding-left: 8pt;
+	}
+
+	ul li::before {
+		list-style: none;
+		font-family: "Font Awesome 5 Free";
+		font-weight: 600;
+		font-size: 8pt;
+		content: "\f054";
+		position: absolute;
+		left: 0;
+		top: 3pt;
+	}
+	
+	ul ul {
+		list-style: none;
+		padding-left: 0;  /* optional: removes default indents */
+	}
+
+	ul ul li::before {
+		list-style: none;
+		font-family: "Font Awesome 5 Free";
+		font-weight: 600;
+		content: "\f0da";
+	}
+}

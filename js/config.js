@@ -19,7 +19,7 @@ export default {
 	// - true: Display controls on all screens
 	// - false: Hide controls on all screens
 	// - "speaker-only": Only display controls in the speaker view
-	controls: true,
+	controls: false,
 
 	// Help the user learn the controls by providing hints, for example by
 	// bouncing the down arrow when they first encounter a vertical slide
@@ -49,7 +49,7 @@ export default {
 	// number for the current slide. The function should take in a slide
 	// object and return an array with one string [slideNumber] or
 	// three strings [n1,delimiter,n2]. See #formatSlideNumber().
-	slideNumber: false,
+	slideNumber: "c/t",
 
 	// Can be used to limit the contexts in which the slide number appears
 	// - "all":      Always show the slide number
@@ -235,10 +235,10 @@ export default {
 	focusBodyOnPageVisibilityChange: true,
 
 	// Transition style
-	transition: 'slide', // none/fade/slide/convex/concave/zoom
+	transition: 'fade', // none/fade/slide/convex/concave/zoom
 
 	// Transition speed
-	transitionSpeed: 'default', // default/fast/slow
+	transitionSpeed: 'fast', // default/fast/slow
 
 	// Transition style for full page slide backgrounds
 	backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom

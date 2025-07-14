@@ -18,7 +18,7 @@ export default class SlideNumber {
 
 	render() {
 
-		this.element = document.createElement( 'div' );
+		this.element = document.createElement( 'p' );
 		this.element.className = 'slide-number';
 		this.Reveal.getRevealElement().appendChild( this.element );
 
